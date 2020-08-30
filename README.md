@@ -1,1 +1,0 @@
-revamp of steam-friend-night, using deno + svelte (the shiniest tech around)
