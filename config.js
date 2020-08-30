@@ -1,23 +1,8 @@
-const config = {
-    port: 8080,
-    database: {
-        client: 'sqlite3',
-        useNullAsDefault: true,
-        connection: {
-            filename: './sfn.db'
-        },
-        migrations: {
-            directory: './db/migrations'
-        },
-        seeds: {
-            directory: './db/seeds'
-        }
-    },
-    services: {
-        steam_service: {
-            url: 'https://steam-serv.herokuapp.com'
-        }
-    }
-};
+let config;
+
+if (process.env.PROD !== undefined && process.env.PROD == 1)
+    config = require('./config_prod.js');
+else
+    config = require('./config_dev.js');
 
 module.exports = config;

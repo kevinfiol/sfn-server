@@ -6,9 +6,15 @@ const cors = require('cors');
 
 const app = polka();
 
+// opts
+const corsOpts = {
+    origin: ['https://sfn.now.sh', 'https://sfn.vercel.app', 'http://localhost:8090'],
+    optionsSuccessStatus: 200
+};
+
 // middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOpts));
 app.use(parse.json());
 app.use((_, res, next) => {
     res.send = send.bind(null, res);
