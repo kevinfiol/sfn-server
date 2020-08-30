@@ -28,7 +28,8 @@ const SteamService = {
             const boolMap = {};
             entries.map(c => boolMap[c[0]] = false);
 
-            const categories = { entries, boolMap };
+            // Name map is the default json
+            const categories = { entries, boolMap, nameMap: json };
             return categories;
         } catch(e) {
             throw e;
