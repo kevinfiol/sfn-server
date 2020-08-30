@@ -11,7 +11,8 @@
     "rollback": "knex migrate:rollback",
     "migrate:make": "knex migrate:make",
     "seed:run": "knex seed:run",
-    "seed:make": "knex seed:make"
+    "seed:make": "knex seed:make",
+    "heroku:migrate": "heroku run yarn migrate"
   },
   "dependencies": {
     "@polka/parse": "^1.0.0-next.8",

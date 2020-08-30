@@ -1,5 +1,5 @@
 const config = {
-    port: 8080,
+    port: process.env.PORT,
     database: {
         client: 'pg',
         useNullAsDefault: true,
