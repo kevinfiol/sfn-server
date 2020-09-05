@@ -1,13 +1,12 @@
-const LibraryResult = require('../models/LibraryResult.js');
 const NanoID = require('../utils/NanoID.js');
-const { SteamService } = require('../container.js');
+const { LibraryService, SteamService } = require('../container.js');
 
 exports.getAllSteamCategories = async function(_, res) {
     try {
         const categories = await SteamService.getAllSteamCategories();
         res.send(200, categories);
     } catch(e) {
-        throw e;
+        throw new Error('Could not retrieve Steam categories from Steam Service.');
     }
 };
 
@@ -18,7 +17,7 @@ exports.getAllProfiles = async function(req, res) {
         const profiles = await SteamService.getAllProfiles(identifier);
         res.send(200, profiles);
     } catch(e) {
-        throw e;
+        throw new Error('Could not retrieve profiles from Steam Service.');
     }
 };
 
@@ -31,7 +30,7 @@ exports.getCommonApps = async function(req, res) {
 
     // check if exists
     let libraryResult;
-    libraryResult = await LibraryResult.query().findOne({ idString });
+    libraryResult = await LibraryService.getOneByProps({ idString });
 
     // get categories
     const categories = await SteamService.getAllSteamCategories();
@@ -43,7 +42,7 @@ exports.getCommonApps = async function(req, res) {
             const steamapps = await SteamService.getCommonApps(idString);
             const nanoid = NanoID.gen();
 
-            libraryResult = await LibraryResult.query().insertAndFetch({
+            libraryResult = await LibraryService.addAndFetch({
                 nanoid: nanoid,
                 idString: idString,
                 profiles: JSON.stringify(profiles),
@@ -52,7 +51,7 @@ exports.getCommonApps = async function(req, res) {
 
             res.send(200, { libraryResult, categories });
         } catch(e) {
-            throw e;
+            throw new Error('Error retrieving common apps: ' + e.message);
         }
     }
 };
@@ -61,7 +60,7 @@ exports.getLibraryResult = async function(req, res) {
     const nanoid = req.body.nanoid;
 
     try {
-        const libraryResult = await LibraryResult.query().findOne({ nanoid });
+        const libraryResult = await LibraryService.getOneByProps({ nanoid });
 
         if (libraryResult !== undefined) {
             const categories = await SteamService.getAllSteamCategories();
@@ -70,7 +69,7 @@ exports.getLibraryResult = async function(req, res) {
             throw new Error('ID not found.');
         }
     } catch(e) {
-        res.send(200, { error: e.message });
+        throw new Error('Error retrieiving library result: ' + e.message);
     }
 };
 
@@ -80,7 +79,7 @@ exports.updateLibraryResult = async function(req, res) {
 
     // check if exists
     let libraryResult;
-    libraryResult = await LibraryResult.query().findOne({ nanoid });
+    libraryResult = await LibraryService.getOneByProps({ nanoid });
     if (libraryResult === undefined) throw new Error('Library Result for given nanoid does not exist');
 
     try {
@@ -89,6 +88,6 @@ exports.updateLibraryResult = async function(req, res) {
         const categories = await SteamService.getAllSteamCategories()
         res.send(200, { libraryResult: updatedLibraryResult, categories });
     } catch(e) {
-        throw e;
+        throw new Error('Error updating library result: ' + e.message);
     }
 };
