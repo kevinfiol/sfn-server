@@ -1,4 +1,4 @@
-const { Model } = require('../../orm.js');
+const { Model } = require('../orm.js');
 
 class LibraryResult extends Model {
     static get tableName() {
