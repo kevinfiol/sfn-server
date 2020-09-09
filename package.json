@@ -12,7 +12,8 @@
     "migrate:make": "knex migrate:make",
     "seed:run": "knex seed:run",
     "seed:make": "knex seed:make",
-    "heroku:migrate": "heroku run yarn migrate"
+    "heroku:migrate": "heroku run yarn migrate",
+    "heroku:psql": "heroku pg:psql"
   },
   "dependencies": {
     "@polka/parse": "^1.0.0-next.8",
