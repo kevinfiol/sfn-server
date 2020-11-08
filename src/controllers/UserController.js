@@ -23,7 +23,6 @@ exports.getAllProfiles = async function(req, res) {
 
 // 76561197978726907/76561197978726907,76561197961592646,76561197962363601,76561197963689509
 exports.getCommonApps = async function(req, res) {
-    debugger;
     const profiles = req.body.profiles;
     if (!profiles) throw new Error('Invalid profiles object in POST body');
     const idString = profiles.steamids.sort().join(',');
