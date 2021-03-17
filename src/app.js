@@ -2,14 +2,10 @@ const polka = require('polka');
 const send = require('@polka/send-type');
 const parse = require('@polka/parse');
 const helmet = require('helmet');
+const cors = require('cors');
 
 const app = polka();
-
-app.use(function(_, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*"); 
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+app.use(cors({ origin: '*' }));
 
 // middleware
 app.use(helmet());
