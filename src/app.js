@@ -7,11 +7,12 @@ const cors = require('cors');
 const app = polka();
 
 // opts
-const corsOpts = { origin: true };
+const corsOpts = { origin: '*' };
 
 // middleware
 app.use(helmet());
 app.use(cors(corsOpts));
+app.options('*', cors(corsOpts));
 app.use(parse.json());
 app.use((_, res, next) => {
     res.send = send.bind(null, res);
