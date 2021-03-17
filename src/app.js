@@ -15,6 +15,15 @@ const cors = (_, res, next) => {
 };
 app.use(cors);
 
+app.use((req, _, next) => {
+    if (req.method == 'OPTIONS') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('ok');  
+    } else {
+        next();
+    }
+}); 
+
 // middleware
 app.use(helmet());
 app.use(parse.json());
