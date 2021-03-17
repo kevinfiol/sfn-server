@@ -3,7 +3,7 @@ const UserController = require('../controllers/UserController.js');
 
 const router = polka();
 
-router.use(function(_, res, next) {
+router.options('*', function(_, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*"); 
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
