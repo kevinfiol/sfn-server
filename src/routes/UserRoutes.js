@@ -14,7 +14,7 @@ const cors = (_, res, next) => {
 };
 
 router.use((req, _, next) => {
-    if (req.method == 'OPTIONS') {
+    if (req.method == 'OPTIONS' || req.method == 'options') {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end('ok');  
     } else {
