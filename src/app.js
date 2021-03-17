@@ -2,27 +2,21 @@ const polka = require('polka');
 const send = require('@polka/send-type');
 const parse = require('@polka/parse');
 const helmet = require('helmet');
-// const cors = require('cors');
 
 const app = polka();
-// app.use(cors({ origin: '*' }));
 
-const cors = (_, res, next) => {
+// enable cors
+app.use((_, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); 
     res.setHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     next();
-};
-app.use(cors);
+});
 
-app.use((req, _, next) => {
-    if (req.method == 'OPTIONS' || req.method == 'options') {
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('ok');  
-    } else {
-        next();
-    }
-}); 
+// options preflight
+app.options('*', (_, res, next) => {
+    res.end('ok');
+});
 
 // middleware
 app.use(helmet());
