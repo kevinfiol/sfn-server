@@ -3,11 +3,15 @@ const UserController = require('../controllers/UserController.js');
 
 const router = polka();
 
-router.options('*', function(_, res, next) {
+const cors = (_, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); 
     res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
-});
+};
+
+router.options('/getLibraryResult', cors);
+router.options('/getCommonApps', cors);
+router.options('/updateLibraryResult', cors);
 
 // GET
 router.get('/getAllSteamCategories', UserController.getAllSteamCategories);
