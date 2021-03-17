@@ -9,7 +9,8 @@ const app = polka();
 
 const cors = (_, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*"); 
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     next();
 };
 app.use(cors);
