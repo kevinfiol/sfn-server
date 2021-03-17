@@ -3,6 +3,10 @@ const UserController = require('../controllers/UserController.js');
 
 const router = polka();
 
+router.options('*', (_, res, next) => {
+    res.end('ok');
+});
+
 // GET
 router.get('/getAllSteamCategories', UserController.getAllSteamCategories);
 router.get('/getAllProfiles/:identifier', UserController.getAllProfiles);
