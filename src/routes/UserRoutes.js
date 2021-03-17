@@ -13,6 +13,15 @@ const cors = (_, res, next) => {
     next();
 };
 
+router.use((req, _, next) => {
+    if (req.method == 'OPTIONS') {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('ok');  
+    } else {
+        next();
+    }
+}); 
+
 router.options('/getLibraryResult', cors);
 router.options('/getCommonApps', cors);
 router.options('/updateLibraryResult', cors);
