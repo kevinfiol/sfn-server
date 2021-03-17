@@ -13,11 +13,6 @@ app.use((_, res, next) => {
     next();
 });
 
-// options preflight
-app.options('*', (_, res, next) => {
-    res.end('ok');
-});
-
 // middleware
 app.use(helmet());
 app.use(parse.json());
