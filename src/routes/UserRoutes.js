@@ -2,6 +2,9 @@ const polka = require('polka');
 const cors = require('cors');
 const UserController = require('../controllers/UserController.js');
 
+const router = polka();
+router.use(cors());
+
 // GET
 router.get('/getAllSteamCategories', UserController.getAllSteamCategories);
 router.get('/getAllProfiles/:identifier', UserController.getAllProfiles);

@@ -8,7 +8,8 @@ const app = polka();
 
 // opts
 const corsOpts = {
-    origin: ['https://sfn.now.sh', 'https://sfn.vercel.app', 'http://localhost:8090'],
+    origin: '*',
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     optionsSuccessStatus: 200
 };
 
