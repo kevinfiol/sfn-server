@@ -15,7 +15,7 @@ const corsOpts = {
 
 // middleware
 app.use(helmet());
-app.use(cors(corsOpts));
+// app.use(cors(corsOpts));
 app.use(parse.json());
 app.use((_, res, next) => {
     res.send = send.bind(null, res);
