@@ -23,6 +23,7 @@ exports.getAllProfiles = async function(req, res) {
 
 // 76561197978726907/76561197978726907,76561197961592646,76561197962363601,76561197963689509
 exports.getCommonApps = async function(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const profiles = req.body.profiles;
     if (!profiles) throw new Error('Invalid profiles object in POST body');
     const idString = profiles.steamids.sort().join(',');
@@ -56,6 +57,7 @@ exports.getCommonApps = async function(req, res) {
 };
 
 exports.getLibraryResult = async function(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const nanoid = req.body.nanoid;
 
     try {
@@ -73,6 +75,7 @@ exports.getLibraryResult = async function(req, res) {
 };
 
 exports.updateLibraryResult = async function(req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const nanoid = req.body.nanoid;
     if (!nanoid) throw new Error('Invalid nanoid received in POST body');
 
