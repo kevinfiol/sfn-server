@@ -13,6 +13,9 @@ docker-compose up
 
 Run migrations
 ```bash
-docker exec -t -i <sfn_server_node container ID> ash # use ash instead of bash for alpine container
-pnpm run migrate # from within docker container
+# use ash instead of bash for alpine-based image
+docker exec -t -i <sfn_server_node container ID> ash
+
+# from within docker container, run migration script
+pnpm run migrate
 ```
