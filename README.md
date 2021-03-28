@@ -6,13 +6,13 @@ See [sfn-client](https://github.com/kevinfiol/sfn-client) for more information.
 
 ## Deploy (w/ Docker)
 
-````
+```bash
 docker-compose build
 docker-compose up
 ```
 
 Run migrations
-```
+```bash
 docker exec -t -i <sfn_server_node container ID> bash
-# pnpm run migrate
+pnpm run migrate # from within docker container
 ```
