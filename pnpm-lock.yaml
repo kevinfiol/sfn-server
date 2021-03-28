@@ -2,6 +2,7 @@ dependencies:
   '@polka/parse': 1.0.0-next.8
   '@polka/send-type': 0.5.2
   cors: 2.8.5
+  env-smart: 2.2.0
   helmet: 3.23.3
   knex: 0.21.19_pg@8.5.1+sqlite3@5.0.2
   nanoid: 3.1.22
@@ -450,6 +451,10 @@ packages:
     optional: true
     resolution:
       integrity: sha1-OoOpBOVDUyh4dMVkt1SThoSamMk=
+  /env-smart/2.2.0:
+    dev: false
+    resolution:
+      integrity: sha512-OUnSyYqW/rMri7P/4efKMujEftzr7vD4D5Pco+W+47gW8OEVKOaAt7zBpXkSSDkQ5iA90JKBeISwdkAQh4B2Qw==
   /esm/3.2.25:
     dev: false
     engines:
@@ -2260,6 +2265,7 @@ specifiers:
   '@polka/parse': ^1.0.0-next.8
   '@polka/send-type': ^0.5.2
   cors: ^2.8.5
+  env-smart: ^2.2.0
   helmet: ^3.23.3
   knex: ^0.21.2
   nanoid: ^3.1.10

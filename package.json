@@ -1,7 +1,7 @@
 {
   "license": "MIT",
   "engines": {
-    "node": "15.x"
+    "node": "14.x"
   },
   "scripts": {
     "start": "node run.js",
@@ -19,6 +19,7 @@
     "@polka/parse": "^1.0.0-next.8",
     "@polka/send-type": "^0.5.2",
     "cors": "^2.8.5",
+    "env-smart": "^2.2.0",
     "helmet": "^3.23.3",
     "knex": "^0.21.2",
     "nanoid": "^3.1.10",
